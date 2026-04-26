@@ -1,14 +1,20 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub mod ceaser_cipher;
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::ceaser_cipher::CeaserCipher;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    fn test_encrypt_ceaser() {
+        let plaintext = "enemyfallingbackbreakthroughimminentlucius";
+        let ciphertext = "jsjrdkfqqnslgfhpgwjfpymwtzlmnrrnsjsyqzhnzx";
+        assert_eq!(CeaserCipher::encrypt(plaintext, 5), ciphertext);
+    }
+
+    #[test]
+    fn test_decrypt_ceaser() {
+        let plaintext = "enemyfallingbackbreakthroughimminentlucius";
+        let ciphertext = "jsjrdkfqqnslgfhpgwjfpymwtzlmnrrnsjsyqzhnzx";
+        assert_eq!(CeaserCipher::decrypt(ciphertext, 5), plaintext);
     }
 }
